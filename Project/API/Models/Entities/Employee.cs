@@ -1,5 +1,5 @@
 ﻿using API.Models.Common;
-using API.Models.Enums;
+using API.Models.Enums.Employee;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
