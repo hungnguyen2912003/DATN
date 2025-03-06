@@ -11,7 +11,7 @@ namespace API.Models.Entities
         [Key]
         public Guid Id { get; set; }
         [Required]
-        [MaxLength(50)]
+        [StringLength(50)]
         public string? FullName { get; set; }
         [Required]
         public GenderType Gender { get; set; }
@@ -25,18 +25,18 @@ namespace API.Models.Entities
         [Phone]
         public string? PhoneNumber { get; set; }
         [Required]
-        [MaxLength(500)]
+        [StringLength(500)]
         public string? Address { get; set; }
         [Required]
         public DateTime DateOfBirth { get; set; }
         [Required]
-        [MaxLength(500)]
+        [StringLength(500)]
         public string? Degree { get; set; }
         [Required]
-        [MaxLength(500)]
+        [StringLength(500)]
         public string? ProfessionalQualification { get; set; }
         [Required]
-        [MaxLength(500)]
+        [StringLength(500)]
         public string? Image { get; set; }
         [Required]
         public DateTime StartDate { get; set; }
