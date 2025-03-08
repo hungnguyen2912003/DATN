@@ -63,5 +63,13 @@ namespace API.Models.Entities
         [Required]
         // Trạng thái
         public bool Status { get; set; }
+
+        // ForeignKey
+        public Guid MedicineCategoryId { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationship
+        [ForeignKey("MedicineCategoryId")]
+        public virtual MedicineCategory? MedicineCategory { get; set; }
     }
 }

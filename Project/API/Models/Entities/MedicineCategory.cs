@@ -28,5 +28,9 @@ namespace API.Models.Entities
         [Required]
         // Trạng thái
         public bool Status { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationship
+        public virtual ICollection<Medicine>? Medicines { get; set; }
     }
 }
