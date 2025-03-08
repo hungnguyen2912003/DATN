@@ -15,6 +15,7 @@ namespace API.Models.Common
         DbSet<Medicine> medicines { get; set; }
         DbSet<MedicineCategory> medicineCategories { get; set; }
         DbSet<TreatmentMethod> treatmentMethods { get; set; }
+        DbSet<Room> rooms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,6 +23,11 @@ namespace API.Models.Common
             {
                 entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
                 entity.Property(e => e.DosageQuantity).HasColumnType("decimal(18, 2)");
+            });
+
+            modelBuilder.Entity<TreatmentMethod>(entity =>
+            {
+                entity.Property(e => e.Cost).HasColumnType("decimal(18, 2)");
             });
         }
     }

@@ -4,6 +4,7 @@ using API.Models.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250308130733_Initial TreatmentMethod and relationship with Dep")]
+    partial class InitialTreatmentMethodandrelationshipwithDep
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,53 +331,6 @@ namespace API.Migrations
                     b.ToTable("MedicineCategory");
                 });
 
-            modelBuilder.Entity("API.Models.Entities.Room", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CreatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("RoomCode")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("RoomName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
-
-                    b.Property<Guid>("TreatmentMethodId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UpdatedBy")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TreatmentMethodId");
-
-                    b.ToTable("Room");
-                });
-
             modelBuilder.Entity("API.Models.Entities.TreatmentMethod", b =>
                 {
                     b.Property<Guid>("Id")
@@ -455,17 +411,6 @@ namespace API.Migrations
                     b.Navigation("MedicineCategory");
                 });
 
-            modelBuilder.Entity("API.Models.Entities.Room", b =>
-                {
-                    b.HasOne("API.Models.Entities.TreatmentMethod", "TreatmentMethod")
-                        .WithMany("Rooms")
-                        .HasForeignKey("TreatmentMethodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TreatmentMethod");
-                });
-
             modelBuilder.Entity("API.Models.Entities.TreatmentMethod", b =>
                 {
                     b.HasOne("API.Models.Entities.Department", "Department")
@@ -492,11 +437,6 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.Entities.MedicineCategory", b =>
                 {
                     b.Navigation("Medicines");
-                });
-
-            modelBuilder.Entity("API.Models.Entities.TreatmentMethod", b =>
-                {
-                    b.Navigation("Rooms");
                 });
 #pragma warning restore 612, 618
         }

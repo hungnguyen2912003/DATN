@@ -4,6 +4,7 @@ using API.Models.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250308132124_Initial TreatmentMethod and relationship with Room")]
+    partial class InitialTreatmentMethodandrelationshipwithRoom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -358,9 +361,6 @@ namespace API.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("TreatmentMethodId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -369,8 +369,6 @@ namespace API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TreatmentMethodId");
 
                     b.ToTable("Room");
                 });
@@ -398,6 +396,9 @@ namespace API.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<Guid>("RoomId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -421,6 +422,8 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("TreatmentMethod");
                 });
@@ -455,17 +458,6 @@ namespace API.Migrations
                     b.Navigation("MedicineCategory");
                 });
 
-            modelBuilder.Entity("API.Models.Entities.Room", b =>
-                {
-                    b.HasOne("API.Models.Entities.TreatmentMethod", "TreatmentMethod")
-                        .WithMany("Rooms")
-                        .HasForeignKey("TreatmentMethodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("TreatmentMethod");
-                });
-
             modelBuilder.Entity("API.Models.Entities.TreatmentMethod", b =>
                 {
                     b.HasOne("API.Models.Entities.Department", "Department")
@@ -474,7 +466,15 @@ namespace API.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("API.Models.Entities.Room", "Room")
+                        .WithMany("TreatmentMethods")
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Department");
+
+                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("API.Models.Entities.Department", b =>
@@ -494,9 +494,9 @@ namespace API.Migrations
                     b.Navigation("Medicines");
                 });
 
-            modelBuilder.Entity("API.Models.Entities.TreatmentMethod", b =>
+            modelBuilder.Entity("API.Models.Entities.Room", b =>
                 {
-                    b.Navigation("Rooms");
+                    b.Navigation("TreatmentMethods");
                 });
 #pragma warning restore 612, 618
         }

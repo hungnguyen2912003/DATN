@@ -4,6 +4,7 @@ using API.Models.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250308133809_Fix TreatmentMethod and relationship with Room")]
+    partial class FixTreatmentMethodandrelationshipwithRoom
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -391,12 +394,15 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("DepartmentId")
+                    b.Property<Guid?>("DepartmentId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Description")
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid?>("RoomId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -421,6 +427,8 @@ namespace API.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("TreatmentMethod");
                 });
@@ -470,9 +478,11 @@ namespace API.Migrations
                 {
                     b.HasOne("API.Models.Entities.Department", "Department")
                         .WithMany("TreatmentMethods")
-                        .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DepartmentId");
+
+                    b.HasOne("API.Models.Entities.Room", null)
+                        .WithMany("TreatmentMethods")
+                        .HasForeignKey("RoomId");
 
                     b.Navigation("Department");
                 });
@@ -492,6 +502,11 @@ namespace API.Migrations
             modelBuilder.Entity("API.Models.Entities.MedicineCategory", b =>
                 {
                     b.Navigation("Medicines");
+                });
+
+            modelBuilder.Entity("API.Models.Entities.Room", b =>
+                {
+                    b.Navigation("TreatmentMethods");
                 });
 
             modelBuilder.Entity("API.Models.Entities.TreatmentMethod", b =>
