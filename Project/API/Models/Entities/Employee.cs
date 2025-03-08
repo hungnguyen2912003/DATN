@@ -9,8 +9,12 @@ namespace API.Models.Entities
     public class Employee : GeneralProps
     {
         [Key]
-        // Mã nhân viên
+        // ID
         public Guid Id { get; set; }
+        // Mã nhân viên
+        [Required]
+        [StringLength(50)]
+        public string? EmployeeCode { get; set; }
         [Required]
         [StringLength(50)]
         // Họ tên nhân viên

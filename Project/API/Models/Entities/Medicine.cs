@@ -9,8 +9,11 @@ namespace API.Models.Entities
     public class Medicine : GeneralProps
     {
         [Key]
-        // Mã thuốc
+        // ID
         public Guid Id { get; set; }
+        // Mã thuốc
+        [Key]
+        public string? MedicineCode { get; set; }
         [Required]
         [StringLength(500)]
         // Tên thuốc
