@@ -24,5 +24,9 @@ namespace API.Models.Entities
         [Required]
         // Trạng thái phòng
         public bool Status { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationships
+        public virtual ICollection<TreatmentMethod>? TreatmentMethods { get; set; }
     }
 }
