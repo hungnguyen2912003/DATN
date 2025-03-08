@@ -61,12 +61,15 @@ namespace API.Models.Entities
         public EmployeeStatus Status { get; set; }
 
 
-        // Forign Key
+        // Foreign Key
         public Guid DepartmentId { get; set; }
+        public Guid EmployeeTypeId { get; set; }
 
         /////////////////////////////////////////////////////
         /// Relationships
         [ForeignKey("DepartmentId")]
         public virtual Department? Department { get; set; }
+        [ForeignKey("EmployeeTypeId")]
+        public virtual EmployeeType? EmployeeType { get; set; }
     }
 }

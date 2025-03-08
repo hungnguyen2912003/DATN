@@ -21,5 +21,9 @@ namespace API.Models.Entities
         [StringLength(500)]
         // Mô tả
         public string? Description { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationship
+        public virtual ICollection<Employee>? Employees { get; set; }
     }
 }
