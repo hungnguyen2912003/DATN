@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace API.Models.Entities
 {
     [Table("MedicineType")]
-    public class MedicineType : GeneralProps
+    public class MedicineCategory : GeneralProps
     {
         [Key]
         // ID
@@ -13,7 +13,7 @@ namespace API.Models.Entities
         [Required]
         [StringLength(20)]
         // Mã loại thuốc
-        public string? MedicineTypeCode { get; set; }
+        public string? MedicineCategoryCode { get; set; }
         [Required]
         [StringLength(50)]
         // Tên loại thuốc
