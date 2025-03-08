@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.Entities
 {
-    [Table("MedicineType")]
+    [Table("MedicineCategory")]
     public class MedicineCategory : GeneralProps
     {
         [Key]

@@ -12,5 +12,17 @@ namespace API.Models.Common
         DbSet<Employee> employees { get; set; }
         DbSet<Department> departments { get; set; }
         DbSet<EmployeeCategory> employeeCategories { get; set; }
+        DbSet<Medicine> medicines { get; set; }
+        DbSet<MedicineCategory> medicineCategories { get; set; }
+        DbSet<TreatmentMethod> treatmentMethods { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Medicine>(entity =>
+            {
+                entity.Property(e => e.Price).HasColumnType("decimal(18, 2)");
+                entity.Property(e => e.DosageQuantity).HasColumnType("decimal(18, 2)");
+            });
+        }
     }
 }
