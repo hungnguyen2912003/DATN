@@ -16,6 +16,7 @@ namespace API.Models.Common
         DbSet<MedicineCategory> medicineCategories { get; set; }
         DbSet<TreatmentMethod> treatmentMethods { get; set; }
         DbSet<Room> rooms { get; set; }
+        DbSet<Regulation> regulations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
