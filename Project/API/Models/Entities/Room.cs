@@ -25,8 +25,12 @@ namespace API.Models.Entities
         // Trạng thái phòng
         public bool Status { get; set; }
 
+        // ForeignKey
+        public Guid TreatmentMethodId { get; set; }
+
         /////////////////////////////////////////////////////
         /// Relationships
-        public virtual ICollection<TreatmentMethod>? TreatmentMethods { get; set; }
+        [ForeignKey("TreatmentMethodId")]
+        public virtual TreatmentMethod? TreatmentMethod { get; set; }
     }
 }

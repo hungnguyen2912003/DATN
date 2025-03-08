@@ -30,12 +30,11 @@ namespace API.Models.Entities
 
         // ForeignKey
         public Guid DepartmentId { get; set; }
-        public Guid RoomId { get; set; }
+
         /////////////////////////////////////////////////////
         /// Relationships
         [ForeignKey("DepartmentId")]
         public virtual Department? Department { get; set; }
-        [ForeignKey("RoomId")]
-        public virtual Room? Room { get; set; }
+        public virtual ICollection<Room>? Rooms { get; set; }
     }
 }
