@@ -28,5 +28,6 @@ namespace API.Models.Entities
         /////////////////////////////////////////////////////
         /// Relationships
         public virtual ICollection<Employee>? Employees { get; set; }
+        public virtual ICollection<TreatmentMethod>? TreatmentMethods { get; set; }
     }
 }

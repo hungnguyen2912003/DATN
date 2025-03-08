@@ -27,5 +27,13 @@ namespace API.Models.Entities
         [Required]
         // Trạng thái
         public bool Status { get; set; }
+
+        // ForeignKey
+        public Guid DepartmentId { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationships
+        [ForeignKey("DepartmentId")]
+        public virtual Department? Department { get; set; }
     }
 }
