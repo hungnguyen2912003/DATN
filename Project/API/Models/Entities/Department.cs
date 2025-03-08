@@ -18,7 +18,6 @@ namespace API.Models.Entities
         [StringLength(50)]
         // Tên phòng ban
         public string? Name { get; set; }
-        [Required]
         [StringLength(500)]
         // Mô tả
         public string? Description { get; set; }

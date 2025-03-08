@@ -19,7 +19,6 @@ namespace API.Models.Entities
         [StringLength(500)]
         // Tên thuốc
         public string? Name { get; set; }
-        [Required]
         [StringLength(500)]
         // Mô tả
         public string? Description { get; set; }

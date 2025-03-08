@@ -15,7 +15,7 @@ namespace API.Models.Entities
         [StringLength(20)]
         public string? EmployeeTypeCode { get; set; }
         [Required]
-        [StringLength(500)]
+        [StringLength(50)]
         // Tên loại nhân viên
         public string? Name { get; set; }
         [StringLength(500)]
