@@ -9,38 +9,51 @@ namespace API.Models.Entities
     public class Employee : GeneralProps
     {
         [Key]
+        // Mã nhân viên
         public Guid Id { get; set; }
         [Required]
         [StringLength(50)]
+        // Họ tên nhân viên
         public string? FullName { get; set; }
         [Required]
+        // Giới tính
         public GenderType Gender { get; set; }
         [Required]
         [StringLength(12, MinimumLength = 9)]
+        // Chứng minh thư
         public string? IdentityCard { get; set; }
         [Required]
         [EmailAddress]
+        // Email
         public string? Email { get; set; }
         [Required]
         [Phone]
+        // Số điện thoại
         public string? PhoneNumber { get; set; }
         [Required]
         [StringLength(500)]
+        // Địa chỉ
         public string? Address { get; set; }
         [Required]
+        // Ngày sinh
         public DateTime DateOfBirth { get; set; }
         [Required]
         [StringLength(500)]
+        // Bằng cấp
         public string? Degree { get; set; }
         [Required]
         [StringLength(500)]
+        // Trình độ chuyên môn
         public string? ProfessionalQualification { get; set; }
         [Required]
         [StringLength(500)]
+        // Hình ảnh
         public string? Image { get; set; }
         [Required]
+        // Ngày bắt đầu làm việc
         public DateTime StartDate { get; set; }
         [Required]
+        // Trạng thái nhân viên
         public EmployeeStatus Status { get; set; }
     }
 }
