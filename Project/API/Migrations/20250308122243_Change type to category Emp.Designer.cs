@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(HospitalDBContext))]
     [Migration("20250308122243_Change type to category Emp")]
     partial class ChangetypetocategoryEmp
     {

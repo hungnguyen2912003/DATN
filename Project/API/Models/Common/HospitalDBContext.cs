@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Models.Common
 {
-    public class ApplicationDBContext : DbContext
+    public class HospitalDBContext : DbContext
     {
-        public ApplicationDBContext(DbContextOptions options) : base(options)
+        public HospitalDBContext(DbContextOptions options) : base(options)
         {
         }
 

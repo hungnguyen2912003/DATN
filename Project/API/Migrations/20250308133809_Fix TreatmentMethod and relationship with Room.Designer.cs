@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(HospitalDBContext))]
     [Migration("20250308133809_Fix TreatmentMethod and relationship with Room")]
     partial class FixTreatmentMethodandrelationshipwithRoom
     {

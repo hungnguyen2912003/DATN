@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(HospitalDBContext))]
     [Migration("20250308120028_Initial DB")]
     partial class InitialDB
     {

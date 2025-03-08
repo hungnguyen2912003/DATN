@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace API.Migrations
 {
-    [DbContext(typeof(ApplicationDBContext))]
+    [DbContext(typeof(HospitalDBContext))]
     [Migration("20250308124830_Initial Medicine and Medicine Category Tbl")]
     partial class InitialMedicineandMedicineCategoryTbl
     {

@@ -7,7 +7,7 @@ namespace API.Configurations
     {
         public static IServiceCollection InjectDbContext(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDBContext>(options =>
+            services.AddDbContext<HospitalDBContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
