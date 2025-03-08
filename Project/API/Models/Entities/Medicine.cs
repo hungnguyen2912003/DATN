@@ -12,7 +12,8 @@ namespace API.Models.Entities
         // ID
         public Guid Id { get; set; }
         // Mã thuốc
-        [Key]
+        [Required]
+        [StringLength(20)]
         public string? MedicineCode { get; set; }
         [Required]
         [StringLength(500)]

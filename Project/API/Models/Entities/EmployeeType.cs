@@ -12,7 +12,7 @@ namespace API.Models.Entities
         public Guid Id { get; set; }
         // Mã loại nhân viên
         [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         public string? EmployeeTypeCode { get; set; }
         [Required]
         [StringLength(500)]

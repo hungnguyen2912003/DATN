@@ -12,7 +12,7 @@ namespace API.Models.Entities
         public Guid Id { get; set; }
         // Mã phòng ban
         [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         public string? DepartmentCode { get; set; }
         [Required]
         [StringLength(50)]
