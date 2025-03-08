@@ -61,7 +61,7 @@ namespace API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Department");
+                    b.ToTable("Department", (string)null);
                 });
 
             modelBuilder.Entity("API.Models.Entities.Employee", b =>
@@ -146,7 +146,7 @@ namespace API.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Employee");
+                    b.ToTable("Employee", (string)null);
                 });
 
             modelBuilder.Entity("API.Models.Entities.Employee", b =>
