@@ -8,11 +8,14 @@ namespace API.Models.Entities
     public class EmployeeType : GeneralProps
     {
         [Key]
+        // Mã loại nhân viên
         public Guid Id { get; set; }
         [Required]
         [StringLength(500)]
+        // Tên loại nhân viên
         public string? Name { get; set; }
         [StringLength(500)]
+        // Mô tả
         public string? Description { get; set; }
     }
 }
