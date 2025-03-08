@@ -24,5 +24,9 @@ namespace API.Models.Entities
         [Required]
         // Trạng thái phòng ban
         public bool Status { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationships
+        public virtual ICollection<Employee>? Employees { get; set; }
     }
 }

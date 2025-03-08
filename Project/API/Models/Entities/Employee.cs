@@ -59,5 +59,14 @@ namespace API.Models.Entities
         [Required]
         // Trạng thái nhân viên
         public EmployeeStatus Status { get; set; }
+
+
+        // Forign Key
+        public Guid DepartmentId { get; set; }
+
+        /////////////////////////////////////////////////////
+        /// Relationships
+        [ForeignKey("DepartmentId")]
+        public virtual Department? Department { get; set; }
     }
 }
