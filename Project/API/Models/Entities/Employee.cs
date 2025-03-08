@@ -63,13 +63,13 @@ namespace API.Models.Entities
 
         // Foreign Key
         public Guid DepartmentId { get; set; }
-        public Guid EmployeeTypeId { get; set; }
+        public Guid EmployeeCategoryId { get; set; }
 
         /////////////////////////////////////////////////////
         /// Relationships
         [ForeignKey("DepartmentId")]
         public virtual Department? Department { get; set; }
-        [ForeignKey("EmployeeTypeId")]
-        public virtual EmployeeType? EmployeeType { get; set; }
+        [ForeignKey("EmployeeCategoryId")]
+        public virtual EmployeeCategory? EmployeeCategory { get; set; }
     }
 }

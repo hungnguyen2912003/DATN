@@ -11,6 +11,6 @@ namespace API.Models.Common
 
         DbSet<Employee> employees { get; set; }
         DbSet<Department> departments { get; set; }
-        DbSet<EmployeeType> employeeTypes { get; set; }
+        DbSet<EmployeeCategory> employeeCategories { get; set; }
     }
 }

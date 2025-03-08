@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace API.Models.Entities
 {
-    [Table("EmployeeType")]
-    public class EmployeeType : GeneralProps
+    [Table("EmployeeCategory")]
+    public class EmployeeCategory : GeneralProps
     {
         [Key]
         // ID
@@ -13,7 +13,7 @@ namespace API.Models.Entities
         // Mã loại nhân viên
         [Required]
         [StringLength(20)]
-        public string? EmployeeTypeCode { get; set; }
+        public string? EmployeeCategoryCode { get; set; }
         [Required]
         [StringLength(50)]
         // Tên loại nhân viên
