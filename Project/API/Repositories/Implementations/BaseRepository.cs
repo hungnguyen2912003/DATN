@@ -49,7 +49,7 @@ namespace API.Repositories.Implementations
             return entity;
         }
 
-        public async Task<T> UpdateAsync(T entity)
+        public async Task<T?> UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();

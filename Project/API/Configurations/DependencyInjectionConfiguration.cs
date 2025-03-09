@@ -32,7 +32,8 @@ namespace API.Configurations
         public static IServiceCollection RegisterRepositories(this IServiceCollection services)
         {
             services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddScoped<MedicineRepository>();
+            services.AddScoped<IMedicineRepository, MedicineRepository>();
+            services.AddScoped<IMedicineCategoryRepository, MedicineCategoryRepository>();
             return services;
         }
     }

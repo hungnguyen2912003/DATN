@@ -1,10 +1,10 @@
 ﻿using API.Models.Enums.Medicine;
-using System.ComponentModel.DataAnnotations;
 
-namespace API.Models.DTOs.Request.Medicine
+namespace API.Models.DTOs.Response
 {
-    public class CreateMedicineRequestDTO
+    public class MedicineResponseDTO
     {
+        public Guid Id { get; set; }
         public string? MedicineCode { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
@@ -20,5 +20,6 @@ namespace API.Models.DTOs.Request.Medicine
         public string? ActiveIngredient { get; set; }
         public DateTime ExpiryDate { get; set; }
         public bool Status { get; set; }
+        public Guid MedicineCategoryId { get; set; }
     }
 }

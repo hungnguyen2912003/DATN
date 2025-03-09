@@ -1,10 +1,8 @@
-﻿using API.Models.DTOs.Request.Medicine;
-using API.Models.DTOs.Response.Medicine;
+﻿using API.Models.DTOs.Request.Create;
+using API.Models.DTOs.Response;
 using API.Models.Entities;
 using API.Repositories.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
@@ -39,7 +37,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateMedicine([FromBody] CreateMedicineRequestDTO request)
+        public async Task<IActionResult> CreateMedicine([FromBody] MedicineRequestDTO request)
         {
             //Map DTO <-> Domain: Create Medicine
             var medicine = new Medicine
@@ -58,7 +56,11 @@ namespace API.Controllers
                 ManufacturedDate = request.ManufacturedDate,
                 ActiveIngredient = request.ActiveIngredient,
                 ExpiryDate = request.ExpiryDate,
-                Status = request.Status
+                Status = request.Status,
+                MedicineCategoryId = request.MedicineCategoryId,
+                CreatedBy = "ADMIN",
+                CreatedAt = DateTime.Now,
+                UpdatedBy = null
             };
 
             await medicineRepository.CreateAsync(medicine);
@@ -82,7 +84,8 @@ namespace API.Controllers
                 ManufacturedDate = medicine.ManufacturedDate,
                 ActiveIngredient = medicine.ActiveIngredient,
                 ExpiryDate = medicine.ExpiryDate,
-                Status = medicine.Status
+                Status = medicine.Status,
+                MedicineCategoryId = medicine.MedicineCategoryId
             };
 
             return Ok(response);
