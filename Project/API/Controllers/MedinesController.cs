@@ -59,8 +59,7 @@ namespace API.Controllers
                 Status = request.Status,
                 MedicineCategoryId = request.MedicineCategoryId,
                 CreatedBy = "ADMIN",
-                CreatedAt = DateTime.Now,
-                UpdatedBy = null
+                CreatedAt = DateTime.Now
             };
 
             await medicineRepository.CreateAsync(medicine);
@@ -89,6 +88,72 @@ namespace API.Controllers
             };
 
             return Ok(response);
+        }
+
+        [HttpPut]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> UpdateMedicine([FromRoute] Guid id, [FromBody] MedicineRequestDTO request)
+        {
+            var medicine = await medicineRepository.GetByIdAsync(id);
+            if(medicine == null)
+            {
+                return NotFound();
+            }
+            // Map DTO <-> Domain: Update Medicine
+            medicine.MedicineCode = request.MedicineCode;
+            medicine.Name = request.Name;
+            medicine.Description = request.Description;
+            medicine.Image = request.Image;
+            medicine.Price = request.Price;
+            medicine.InStock = request.InStock;
+            medicine.UnitQuantity = request.UnitQuantity;
+            medicine.UnitType = request.UnitType;
+            medicine.DosageQuantity = request.DosageQuantity;
+            medicine.DosageUnit = request.DosageUnit;
+            medicine.Manufacturer = request.Manufacturer;
+            medicine.ManufacturedDate = request.ManufacturedDate;
+            medicine.ActiveIngredient = request.ActiveIngredient;
+            medicine.ExpiryDate = request.ExpiryDate;
+            medicine.Status = request.Status;
+            medicine.MedicineCategoryId = request.MedicineCategoryId;
+            medicine.UpdatedBy = "ADMIN";
+            medicine.UpdatedAt = DateTime.Now;
+            await medicineRepository.UpdateAsync(medicine);
+            // Map Domain <-> DTO: Response Medicine
+            var response = new MedicineResponseDTO
+            {
+                Id = medicine.Id,
+                MedicineCode = medicine.MedicineCode,
+                Name = medicine.Name,
+                Description = medicine.Description,
+                Image = medicine.Image,
+                Price = medicine.Price,
+                InStock = medicine.InStock,
+                UnitQuantity = medicine.UnitQuantity,
+                UnitType = medicine.UnitType,
+                DosageQuantity = medicine.DosageQuantity,
+                DosageUnit = medicine.DosageUnit,
+                Manufacturer = medicine.Manufacturer,
+                ManufacturedDate = medicine.ManufacturedDate,
+                ActiveIngredient = medicine.ActiveIngredient,
+                ExpiryDate = medicine.ExpiryDate,
+                Status = medicine.Status,
+                MedicineCategoryId = medicine.MedicineCategoryId
+            };
+            return Ok(response);
+        }
+
+        [HttpDelete]
+        [Route("{id:Guid}")]
+        public async Task<IActionResult> DeleteMedicine([FromRoute] Guid id)
+        {
+            var medicine = await medicineRepository.GetByIdAsync(id);
+            if (medicine == null)
+            {
+                return NotFound();
+            }
+            await medicineRepository.DeleteAsync(id);
+            return Ok();
         }
     }
 }
